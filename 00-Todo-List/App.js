@@ -8,12 +8,18 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native'
+import { useState } from 'react'
 import Task from './components/Task'
 
 export default function App() {
+  const [task, setTask] = useState()
+
+  const handleAddTask = () => {
+    console.log(`Task added`)
+  }
+
   return (
     <View style={styles.container}>
-      {/* Today's Tasks */}
       <View style={styles.tasksWrapper}>
         <Text style={styles.sectionTitle}>Today's Tasks</Text>
       </View>
@@ -29,8 +35,13 @@ export default function App() {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.writeTaskWrapper}
       >
-        <TextInput style={styles.input} placeholder={'Write a task'} />
-        <TouchableOpacity>
+        <TextInput
+          style={styles.input}
+          placeholder={'Write a task'}
+          value={task}
+          onChangeText={(text) => setTask(text)}
+        />
+        <TouchableOpacity onPress={() => handleAddTask}>
           <View style={styles.addWrapper}>
             <Text style={styles.addText}>+</Text>
           </View>
