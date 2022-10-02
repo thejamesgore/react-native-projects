@@ -10,3 +10,5 @@ Features to complete:
 
 - state management
 - adding and removing tasks
+
+WRITE COMMENTS FOR YOUR CODE!
