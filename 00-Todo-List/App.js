@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   Keyboard,
+  Touchable,
 } from 'react-native'
 import { useState } from 'react'
 import Task from './components/Task'
@@ -37,7 +38,11 @@ export default function App() {
 
       <View style={styles.items}>
         {taskItems.map((item, index) => {
-          return <Task key={index} text={item} />
+          return (
+            <TouchableOpacity key={index} onPress={() => completeTask(index)}>
+              <Task text={item} />
+            </TouchableOpacity>
+          )
         })}
       </View>
 
