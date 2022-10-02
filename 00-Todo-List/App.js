@@ -7,15 +7,26 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  Keyboard,
 } from 'react-native'
 import { useState } from 'react'
 import Task from './components/Task'
 
 export default function App() {
   const [task, setTask] = useState()
+  const [taskItems, setTaskItems] = useState([])
 
   const handleAddTask = () => {
-    console.log(`Task added`)
+    Keyboard.dismiss()
+    setTaskItems([...taskItems, task])
+    setTask(null)
+    console.log('new task')
+  }
+
+  const completeTask = (index) => {
+    let itemsCopy = [...taskItems]
+    itemsCopy.splice(index, 1)
+    setTaskItems(itemsCopy)
   }
 
   return (
@@ -25,8 +36,9 @@ export default function App() {
       </View>
 
       <View style={styles.items}>
-        <Task text={'Task 1'} />
-        <Task text={'Task 2'} />
+        {taskItems.map((item, index) => {
+          return <Task key={index} text={item} />
+        })}
       </View>
 
       {/* Write a task section */}
@@ -41,7 +53,7 @@ export default function App() {
           value={task}
           onChangeText={(text) => setTask(text)}
         />
-        <TouchableOpacity onPress={() => handleAddTask}>
+        <TouchableOpacity onPress={() => handleAddTask()}>
           <View style={styles.addWrapper}>
             <Text style={styles.addText}>+</Text>
           </View>
