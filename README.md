@@ -1,14 +1,12 @@
 # react-native-projects
 
-A home for all future React Native projects
+A home for all future React Native projects. Full docmentation for each project can be found in the individual project folder.
 
 ## 00 - Todo List
 
-A simple todo list app.
+A simple todo list app. You can add, and remove tasks.
 
-Features to complete:
+Things to do...
 
-- state management
-- adding and removing tasks
-
-WRITE COMMENTS FOR YOUR CODE!
+- WRITE COMMENTS FOR YOUR CODE!
+- Add a README
