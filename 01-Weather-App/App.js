@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar'
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import * as Location from 'expo-location'
-import { API_KEY } from 'react-native-dotenv'
+import { API_KEY } from '@env'
 
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather?'
 
@@ -11,6 +11,7 @@ export default function App() {
   const [errorMsg, setErrorMsg] = useState(null)
 
   useEffect(() => {
+    console.log(`API KEY IS`, API_KEY)
     ;(async () => {
       let { status } = await Location.requestForegroundPermissionsAsync()
 
