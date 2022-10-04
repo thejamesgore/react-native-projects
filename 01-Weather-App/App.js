@@ -4,23 +4,33 @@ import { StyleSheet, Text, View } from 'react-native'
 import * as Location from 'expo-location'
 
 export default function App() {
+  const [location, setLocation] = useState(null)
+  const [errorMsg, setErrorMsg] = useState(null)
+
   useEffect(() => {
-    // load()
+    ;(async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync()
+
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied')
+        return
+      }
+
+      let location = await Location.getCurrentPositionAsync({})
+      setLocation(location)
+    })()
   }, [])
 
-  // async funcion load(){
-  //   try {
-  //     let { } = await Location.requestForegroundPermissionsAsync
-
-  //     if(status !=)
-  //   } catch (error){
-
-  //   }
-  // }
+  let text = 'Waiting..'
+  if (errorMsg) {
+    text = errorMsg
+  } else if (location) {
+    text = JSON.stringify(location)
+  }
 
   return (
     <View style={styles.container}>
-      <Text>Weather App</Text>
+      <Text>{text}</Text>
       <StatusBar style="auto" />
     </View>
   )
