@@ -5,12 +5,15 @@ import * as Location from 'expo-location'
 import { API_KEY } from '@env'
 import axios, { Axios } from 'axios'
 
+import WeatherInfo from './components/WeatherInfo'
+
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather?'
 
 export default function App() {
   const [location, setLocation] = useState(null)
   const [errorMsg, setErrorMsg] = useState(null)
   const [weather, setWeather] = useState(null)
+  const [units, setUnits] = useState('metric')
 
   useEffect(() => {
     ;(async () => {
@@ -27,7 +30,7 @@ export default function App() {
       alert(`Lat: ${latitude}, Longitude ${longitude}`)
       setLocation(location)
 
-      const weatherURL = `${BASE_URL}lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
+      const weatherURL = `${BASE_URL}lat=${latitude}&lon=${longitude}&units=${units}&appid=${API_KEY}`
 
       axios({
         method: 'get',
@@ -35,6 +38,10 @@ export default function App() {
       }).then((response) => {
         setWeather(response.data)
       })
+
+      if (!weather) {
+        setErrorMsg(`Error calling the API`)
+      }
     })()
   }, [])
 
@@ -45,19 +52,39 @@ export default function App() {
     text = JSON.stringify(location)
   }
 
-  return (
-    <View style={styles.container}>
-      <Text>{text}</Text>
-      <StatusBar style="auto" />
-    </View>
-  )
+  if (weather) {
+    const {
+      main: { temp },
+    } = weather
+    return (
+      <View style={styles.container}>
+        <StatusBar style="auto" />
+        <View style={styles.main}>
+          <WeatherInfo weather={weather} />
+        </View>
+      </View>
+    )
+
+    //
+    // Will return an error message if problem with API call
+    //
+  } else {
+    return (
+      <View style={styles.container}>
+        <Text>{errorMsg}</Text>
+        <StatusBar style="auto" />
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+  },
+  main: {
+    justifyContent: 'center',
+    flex: 1,
   },
 })
