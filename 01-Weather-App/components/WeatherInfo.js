@@ -1,5 +1,8 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
+import { colors } from '../utils/index'
+
+const { PRIMARY_COLOR, SECONDARY_COLOR } = colors
 
 const WeatherInfo = ({ weather }) => {
   const {
