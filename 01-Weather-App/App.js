@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import * as Location from 'expo-location'
 import { API_KEY } from '@env'
+import axios, { Axios } from 'axios'
 
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather?'
 
@@ -26,7 +27,14 @@ export default function App() {
       alert(`Lat: ${latitude}, Longitude ${longitude}`)
       setLocation(location)
 
-      const weatherURL = `${BASE_URL}/lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
+      const weatherURL = `${BASE_URL}lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
+
+      axios({
+        method: 'get',
+        url: weatherURL,
+      }).then((response) => {
+        setWeather(response.data)
+      })
     })()
   }, [])
 
