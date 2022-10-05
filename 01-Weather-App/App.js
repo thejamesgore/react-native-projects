@@ -9,9 +9,9 @@ const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather?'
 export default function App() {
   const [location, setLocation] = useState(null)
   const [errorMsg, setErrorMsg] = useState(null)
+  const [weather, setWeather] = useState(null)
 
   useEffect(() => {
-    console.log(`API KEY IS`, API_KEY)
     ;(async () => {
       let { status } = await Location.requestForegroundPermissionsAsync()
 
@@ -23,8 +23,10 @@ export default function App() {
       let location = await Location.getCurrentPositionAsync({})
 
       const { latitude, longitude } = location.coords
-      alert(`Lat: ${latitude}, Longitude ${latitude}`)
+      alert(`Lat: ${latitude}, Longitude ${longitude}`)
       setLocation(location)
+
+      const weatherURL = `${BASE_URL}/lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
     })()
   }, [])
 
