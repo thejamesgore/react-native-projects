@@ -20,7 +20,7 @@ export default function ReloadIcon({ callApi }) {
 const styles = StyleSheet.create({
   reloadIcon: {
     position: 'absolute',
-    top: 40,
+    top: 70,
     right: 20,
   },
 })

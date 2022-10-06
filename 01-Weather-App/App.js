@@ -67,7 +67,7 @@ export default function App() {
           <ReloadIcon callApi={callApi} />
           <WeatherInfo weather={weather} />
         </View>
-        <WeatherDetails weather={weather} />
+        <WeatherDetails weather={weather} units={units} />
       </View>
     )
 
