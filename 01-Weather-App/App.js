@@ -4,10 +4,11 @@ import { StyleSheet, Text, View } from 'react-native'
 import * as Location from 'expo-location'
 import { API_KEY } from '@env'
 import axios, { Axios } from 'axios'
+
 import UnitsPicker from './components/UnitsPicker'
 import ReloadIcon from './components/ReloadIcon'
-
 import WeatherInfo from './components/WeatherInfo'
+import WeatherDetails from './components/WeatherDetails'
 
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather?'
 
@@ -66,6 +67,7 @@ export default function App() {
           <ReloadIcon callApi={callApi} />
           <WeatherInfo weather={weather} />
         </View>
+        <WeatherDetails weather={weather} />
       </View>
     )
 
