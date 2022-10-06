@@ -12,3 +12,5 @@ Things to do...
 - Add a README
 
 # 01 - Weather App
+
+- replace @/react-native-community/picker as doesn't function with iOS
