@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import * as Location from 'expo-location'
 import { API_KEY } from '@env'
 import axios, { Axios } from 'axios'
+import UnitsPicker from './components/UnitsPicker'
 
 import WeatherInfo from './components/WeatherInfo'
 
@@ -53,13 +54,11 @@ export default function App() {
   }
 
   if (weather) {
-    const {
-      main: { temp },
-    } = weather
     return (
       <View style={styles.container}>
         <StatusBar style="auto" />
         <View style={styles.main}>
+          <UnitsPicker units={units} setUnits={setUnits} />
           <WeatherInfo weather={weather} />
         </View>
       </View>
