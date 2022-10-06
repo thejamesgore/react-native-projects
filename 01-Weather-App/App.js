@@ -5,6 +5,7 @@ import * as Location from 'expo-location'
 import { API_KEY } from '@env'
 import axios, { Axios } from 'axios'
 import UnitsPicker from './components/UnitsPicker'
+import ReloadIcon from './components/ReloadIcon'
 
 import WeatherInfo from './components/WeatherInfo'
 
@@ -17,6 +18,10 @@ export default function App() {
   const [units, setUnits] = useState('metric')
 
   useEffect(() => {
+    callApi()
+  }, [units])
+
+  const callApi = () => {
     ;(async () => {
       let { status } = await Location.requestForegroundPermissionsAsync()
 
@@ -43,7 +48,7 @@ export default function App() {
         setErrorMsg(`Error calling the API`)
       }
     })()
-  }, [units])
+  }
 
   let text = 'Waiting..'
   if (errorMsg) {
@@ -58,6 +63,7 @@ export default function App() {
         <StatusBar style="auto" />
         <View style={styles.main}>
           <UnitsPicker units={units} setUnits={setUnits} />
+          <ReloadIcon callApi={callApi} />
           <WeatherInfo weather={weather} />
         </View>
       </View>
@@ -66,7 +72,7 @@ export default function App() {
     //
     // Will return an error message if problem with API call
     //
-  } else {
+  } else if (errorMsg) {
     return (
       <View style={styles.container}>
         <Text>{errorMsg}</Text>

@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Platform, StyleSheet, View } from 'react-native'
 import React from 'react'
 import { Picker } from '@react-native-community/picker'
 
 const UnitsPicker = ({ units, setUnits }) => {
   return (
-    <View>
+    <View style={styles.unitsSystem}>
       <Picker
         selectedValue={units}
         onValueChange={(item) => setUnits(item)}
@@ -20,4 +20,20 @@ const UnitsPicker = ({ units, setUnits }) => {
 
 export default UnitsPicker
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  unitsSystem: {
+    position: 'absolute',
+    ...Platform.select({
+      ios: {
+        top: -20,
+      },
+      android: {
+        top: 20,
+      },
+    }),
+
+    left: 20,
+    height: 50,
+    width: 100,
+  },
+})
