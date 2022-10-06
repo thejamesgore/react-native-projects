@@ -4,7 +4,10 @@ A home for all future React Native projects. Full docmentation for each project 
 
 ## 00 - Todo List
 
-A simple todo list app. You can add, and remove tasks.
+A simple todo list app.
+
+- Add tasks
+- Remove tasks
 
 Things to do...
 
@@ -13,4 +16,13 @@ Things to do...
 
 # 01 - Weather App
 
-- Fixed but with @/react-native-community/picker which wasn't wasn't functioning properly with iOS
+A weather app.
+
+- Choose between Fahrenheit or Celsius
+- Reload the weather
+- See a display of the Air Pressure, Wind, Feel, & Humidity.
+
+Things to do...
+
+- WRITE COMMENTS FOR YOUR CODE!
+- Add a README
