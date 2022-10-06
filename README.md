@@ -13,4 +13,4 @@ Things to do...
 
 # 01 - Weather App
 
-- replace @/react-native-community/picker as doesn't function with iOS
+- Fixed but with @/react-native-community/picker which wasn't wasn't functioning properly with iOS

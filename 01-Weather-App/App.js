@@ -28,7 +28,6 @@ export default function App() {
       let location = await Location.getCurrentPositionAsync({})
 
       const { latitude, longitude } = location.coords
-      alert(`Lat: ${latitude}, Longitude ${longitude}`)
       setLocation(location)
 
       const weatherURL = `${BASE_URL}lat=${latitude}&lon=${longitude}&units=${units}&appid=${API_KEY}`
@@ -44,7 +43,7 @@ export default function App() {
         setErrorMsg(`Error calling the API`)
       }
     })()
-  }, [])
+  }, [units])
 
   let text = 'Waiting..'
   if (errorMsg) {
