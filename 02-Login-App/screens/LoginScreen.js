@@ -28,11 +28,14 @@ const LoginScreen = () => {
       </View>
 
       <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={() => {}} style={styles.button}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {}}
           style={[styles.button, styles.buttonOutline]}
         >
-          <Text style={styles.button}>Register</Text>
+          <Text style={styles.buttonOutlineText}>Register</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -47,4 +50,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
+  inputContainer: {},
+  button: {},
+  buttonText: {},
+  input: {},
+  buttonContainer: {},
+  buttonOutline: {},
+  buttonOutlineText: {},
 })
