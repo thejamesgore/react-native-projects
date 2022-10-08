@@ -7,14 +7,22 @@ import {
   View,
 } from 'react-native'
 import React, { useState } from 'react'
-import auth from '../firebase'
+import { auth } from '../firebase'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const LoginScreen = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
   const handleSignUp = () => {
+    console.log(`ATTEMPTING SIGN UP`)
     auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredentials) => {
+        const user = userCredentials.user
+        console.log(user.email)
+      })
+      .catch((error) => alert(error.message))
   }
 
   return (
@@ -36,10 +44,13 @@ const LoginScreen = () => {
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity onPress={() => {}} style={styles.button}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.buttonOutline]}>
+        <TouchableOpacity
+          onPress={handleSignUp}
+          style={[styles.button, styles.buttonOutline]}
+        >
           <Text style={styles.buttonOutlineText}>Register</Text>
         </TouchableOpacity>
       </View>
