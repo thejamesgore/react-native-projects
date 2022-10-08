@@ -26,3 +26,5 @@ Things to do...
 
 - WRITE COMMENTS FOR YOUR CODE!
 - Add a README
+
+# 02 - Login/Register App W/ Firebase
