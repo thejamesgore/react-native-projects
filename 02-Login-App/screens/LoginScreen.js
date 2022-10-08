@@ -6,22 +6,30 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
+import auth from '../firebase'
 
 const LoginScreen = () => {
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+
+  const handleSignUp = () => {
+    auth
+  }
+
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Email"
-          //   value={email}
-          //   onChangeText={(text) => setEmail(text)}
+          value={email}
+          onChangeText={(text) => setEmail(text)}
           style={styles.input}
         />
         <TextInput
           placeholder="Password"
-          //   value={password}
-          //   onChangeText={(text) => setPassword(text)}
+          value={password}
+          onChangeText={(text) => setPassword(text)}
           style={styles.input}
           secureTextEntry
         />
