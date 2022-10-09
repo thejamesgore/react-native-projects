@@ -9,11 +9,6 @@ A simple todo list app.
 - Add tasks
 - Remove tasks
 
-Things to do...
-
-- WRITE COMMENTS FOR YOUR CODE!
-- Add a README
-
 # 01 - Weather App
 
 A weather app.
@@ -22,9 +17,11 @@ A weather app.
 - Reload the weather
 - See a display of the Air Pressure, Wind, Feel, & Humidity.
 
-Things to do...
-
-- WRITE COMMENTS FOR YOUR CODE!
-- Add a README
-
 # 02 - Login/Register App W/ Firebase
+
+An app demonstrating authentication with firebase.
+
+- Can enter e-mail and password to Register
+- Can login with e-mail and password
+- Can sign out
+- Automatically Navigates to login screen or home screen depending on whether the user is logged in or outx
