@@ -12,15 +12,15 @@ import { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const navigation = useNavigation()
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        navigation.navigate('Home')
+        navigation.replace('Home')
       }
     })
 
@@ -32,6 +32,7 @@ const LoginScreen = () => {
       .createUserWithEmailAndPassword(email, password)
       .then((userCredentials) => {
         const user = userCredentials.user
+        console.log('Registered with:', user.email)
       })
       .catch((error) => alert(error.message))
   }
@@ -54,6 +55,7 @@ const LoginScreen = () => {
           value={email}
           onChangeText={(text) => setEmail(text)}
           style={styles.input}
+          required
         />
         <TextInput
           placeholder="Password"
@@ -61,6 +63,7 @@ const LoginScreen = () => {
           onChangeText={(text) => setPassword(text)}
           style={styles.input}
           secureTextEntry
+          required
         />
       </View>
 
