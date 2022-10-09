@@ -8,19 +8,37 @@ import {
 } from 'react-native'
 import React, { useState } from 'react'
 import { auth } from '../firebase'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useEffect } from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 const LoginScreen = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
+  const navigation = useNavigation()
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        navigation.navigate('Home')
+      }
+    })
+  }, [])
+
   const handleSignUp = () => {
-    console.log(`ATTEMPTING SIGN UP`)
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((userCredentials) => {
         const user = userCredentials.user
-        console.log(user.email)
+      })
+      .catch((error) => alert(error.message))
+  }
+
+  const handleLogin = () => {
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredentials) => {
+        const user = userCredentials.user
       })
       .catch((error) => alert(error.message))
   }
@@ -44,7 +62,12 @@ const LoginScreen = () => {
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={() => {}} style={styles.button}>
+        <TouchableOpacity
+          onPress={() => {
+            handleLogin
+          }}
+          style={styles.button}
+        >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
