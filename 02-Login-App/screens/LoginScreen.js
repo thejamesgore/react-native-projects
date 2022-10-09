@@ -18,11 +18,13 @@ const LoginScreen = () => {
   const navigation = useNavigation()
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         navigation.navigate('Home')
       }
     })
+
+    return unsubscribe
   }, [])
 
   const handleSignUp = () => {
@@ -39,6 +41,7 @@ const LoginScreen = () => {
       .signInWithEmailAndPassword(email, password)
       .then((userCredentials) => {
         const user = userCredentials.user
+        console.log('Logged in with:', user.email)
       })
       .catch((error) => alert(error.message))
   }
@@ -62,12 +65,7 @@ const LoginScreen = () => {
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          onPress={() => {
-            handleLogin
-          }}
-          style={styles.button}
-        >
+        <TouchableOpacity onPress={handleLogin} style={styles.button}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
