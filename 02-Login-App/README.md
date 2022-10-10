@@ -6,7 +6,7 @@ With this app I wanted to try and use an authentication process utilizing Google
 
 ## Technologies Used
 
-React Native
-Expo
-Firebase
-React-Navigation
+- React Native
+- Expo
+- Firebase
+- React-Navigation

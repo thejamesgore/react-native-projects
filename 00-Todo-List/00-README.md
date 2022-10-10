@@ -6,5 +6,5 @@ Used this project as a jumping off point to get back into React Native developme
 
 ## Technologies Used
 
-React-Native
-Expo
+- React-Native
+- Expo

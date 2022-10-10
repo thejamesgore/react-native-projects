@@ -24,4 +24,4 @@ An app demonstrating authentication with firebase.
 - Can enter e-mail and password to Register
 - Can login with e-mail and password
 - Can sign out
-- Automatically Navigates to login screen or home screen depending on whether the user is logged in or outx
+- Automatically Navigates to login screen or home screen depending on whether the user is logged in or out

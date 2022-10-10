@@ -6,8 +6,8 @@ An app that tells you the weather in your current location as well as air pressu
 
 ## Technologies used
 
-React Native
-Expo
-Expo-Location
-Axios
-React-native-community/picker
+- React Native
+- Expo
+- Expo-Location
+- Axios
+- React-native-community/picker
