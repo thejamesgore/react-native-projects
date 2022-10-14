@@ -1,5 +1,12 @@
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import {
+  KeyboardAvoidingView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 import React, { useState } from 'react'
 
 import hiragana from './japanese/Characters'
@@ -18,23 +25,29 @@ export default function App() {
     setCurrentCharacter(randomizer)
   }
 
-  const handleChange = (e) => {
-    setInput(e.target.value)
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault()
 
     if (input.toLowerCase() === hiragana[currentCharacter].romanji) {
       setStreak(streak + 1)
       setStreakMax(Math.max(streak, streakMax))
+      setError(false)
     }
   }
 
   return (
-    <View style={styles.container}>
-      <Text>Hello {currentCharacter}</Text>
-    </View>
+    <KeyboardAvoidingView style={styles.container}>
+      <View>
+        <Text>What Japanese Character is this?</Text>
+        <Text style={styles.hiragana}>{currentCharacter}</Text>
+        <TextInput
+          placeholder="Enter Japanese Character"
+          onChangeText={(text) => setInput(text)}
+          required
+          style={styles.input}
+        />
+      </View>
+    </KeyboardAvoidingView>
   )
 }
 
@@ -44,5 +57,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  input: {
+    backgroundColor: 'white',
+    width: '50%',
+    padding: 20,
+    borderRadius: 5,
+    borderColor: 'black',
+  },
+  hiragana: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 15,
+    paddingHorizontal: 10,
   },
 })
