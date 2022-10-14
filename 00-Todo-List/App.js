@@ -8,7 +8,6 @@ import {
   TextInput,
   TouchableOpacity,
   Keyboard,
-  Touchable,
 } from 'react-native'
 import { useState } from 'react'
 import Task from './components/Task'
