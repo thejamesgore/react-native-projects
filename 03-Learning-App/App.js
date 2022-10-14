@@ -32,14 +32,24 @@ export default function App() {
       setStreak(streak + 1)
       setStreakMax(Math.max(streak, streakMax))
       setError(false)
+      alert('You are correct!')
+      setRandomCharacter()
+    } else {
+      alert('Sorry that was incorrect')
+      setError(true)
+      setStreak(0)
     }
   }
+
+  console.log(hiragana[0].hiragana)
 
   return (
     <KeyboardAvoidingView style={styles.container}>
       <View>
         <Text>What Japanese Character is this?</Text>
-        <Text style={styles.hiragana}>{currentCharacter}</Text>
+        <Text style={styles.hiragana}>
+          {hiragana[currentCharacter].hiragana}
+        </Text>
         <TextInput
           placeholder="Enter Japanese Character"
           onChangeText={(text) => setInput(text)}
@@ -47,6 +57,9 @@ export default function App() {
           style={styles.input}
         />
       </View>
+      <TouchableOpacity onPress={handleSubmit}>
+        <Text>Submit</Text>
+      </TouchableOpacity>
     </KeyboardAvoidingView>
   )
 }
