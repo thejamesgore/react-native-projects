@@ -25,9 +25,7 @@ export default function App() {
     setCurrentCharacter(randomizer)
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
+  const handleSubmit = () => {
     if (input.toLowerCase() === hiragana[currentCharacter].romanji) {
       setStreak(streak + 1)
       setStreakMax(Math.max(streak, streakMax))
@@ -35,9 +33,10 @@ export default function App() {
       alert('You are correct!')
       setRandomCharacter()
     } else {
-      alert('Sorry that was incorrect')
+      alert(`Sorry that was incorrect!`)
       setError(true)
       setStreak(0)
+      setRandomCharacter()
     }
   }
 
@@ -46,8 +45,8 @@ export default function App() {
   return (
     <KeyboardAvoidingView style={styles.container}>
       <View>
-        <Text>What Japanese Character is this?</Text>
-        <Text style={styles.hiragana}>
+        <Text>Test Your Japanese Character</Text>
+        <Text style={styles.hiraganaCharacter}>
           {hiragana[currentCharacter].hiragana}
         </Text>
         <TextInput
