@@ -1,4 +1,6 @@
 {
+  "name": "03-learning-app",
+  "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -7,10 +9,11 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "expo": "~46.0.13",
+    "expo": "~46.0.16",
     "expo-status-bar": "~1.4.0",
     "react": "18.0.0",
-    "react-native": "0.69.6"
+    "react-native": "0.69.6",
+    "react-native-navigation": "^7.30.0-alpha.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
