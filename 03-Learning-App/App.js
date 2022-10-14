@@ -12,6 +12,11 @@ export default function App() {
   const [streak, setStreak] = useState(0)
   const [error, setError] = useState(false)
 
+  const setRandomCharacter = () => {
+    const randomizer = Math.floor(Math.random() * hiragana.length)
+    setCurrentCharacter(randomizer)
+  }
+
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
