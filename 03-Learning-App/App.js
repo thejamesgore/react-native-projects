@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import hiragana from './japanese/Characters'
 
@@ -18,6 +18,10 @@ export default function App() {
   const [streak, setStreak] = useState(0)
   const [streakMax, setStreakMax] = useState(0)
   const [error, setError] = useState(false)
+
+  useEffect(() => {
+    setRandomCharacter()
+  }, [])
 
   const setRandomCharacter = () => {
     const randomizer = Math.floor(Math.random() * hiragana.length)
@@ -39,12 +43,11 @@ export default function App() {
     }
   }
 
-  console.log(hiragana[0].hiragana)
-
   return (
     <KeyboardAvoidingView style={styles.container}>
       <View>
         <Text>Test your knowledge of Japanese characters</Text>
+
         <View style={styles.characterContainer}>
           <Text style={styles.characterText}>
             {hiragana[currentCharacter].hiragana}
@@ -60,6 +63,10 @@ export default function App() {
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text>Submit</Text>
       </TouchableOpacity>
+      <View style={styles.stats}>
+        <Text>Streak: {streak}</Text>
+        <Text>Best streak: {streakMax}</Text>
+      </View>
     </KeyboardAvoidingView>
   )
 }
@@ -78,8 +85,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: 'black',
 
-    // backgroundColor: 'blue',
-
     alignContent: 'center',
     textAlign: 'center',
   },
@@ -96,8 +101,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   button: {
-    marginTop: 30,
+    margin: 30,
     display: 'flex',
     alignContent: 'center',
+  },
+  stats: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignContent: 'space-between',
   },
 })
