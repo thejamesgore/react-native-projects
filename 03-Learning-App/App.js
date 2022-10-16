@@ -64,8 +64,8 @@ export default function App() {
         <Text>Submit</Text>
       </TouchableOpacity>
       <View style={styles.stats}>
-        <Text>Streak: {streak}</Text>
-        <Text>Best streak: {streakMax}</Text>
+        <Text style={styles.statBox}>Streak: {streak}</Text>
+        <Text tyle={styles.statBox}>Best streak: {streakMax}</Text>
       </View>
     </KeyboardAvoidingView>
   )
@@ -110,5 +110,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignContent: 'space-between',
+  },
+  statBox: {
+    paddingHorizontal: 5,
   },
 })
