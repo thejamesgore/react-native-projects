@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import hiragana from './japanese/Characters'
 
@@ -18,6 +18,10 @@ export default function App() {
   const [streak, setStreak] = useState(0)
   const [streakMax, setStreakMax] = useState(0)
   const [error, setError] = useState(false)
+
+  useEffect(() => {
+    setRandomCharacter()
+  }, [])
 
   const setRandomCharacter = () => {
     const randomizer = Math.floor(Math.random() * hiragana.length)
@@ -38,8 +42,6 @@ export default function App() {
       setRandomCharacter()
     }
   }
-
-  console.log(hiragana[0].hiragana)
 
   return (
     <KeyboardAvoidingView style={styles.container}>
