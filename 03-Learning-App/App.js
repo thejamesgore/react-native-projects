@@ -12,10 +12,9 @@ import React, { useState } from 'react'
 import hiragana from './japanese/Characters'
 
 export default function App() {
-  // Declaring our states
-
   const [input, setInput] = useState('')
   const [currentCharacter, setCurrentCharacter] = useState(0)
+  const [charSet, setCharSet] = useState('')
   const [streak, setStreak] = useState(0)
   const [streakMax, setStreakMax] = useState(0)
   const [error, setError] = useState(false)
@@ -45,10 +44,12 @@ export default function App() {
   return (
     <KeyboardAvoidingView style={styles.container}>
       <View>
-        <Text>Test Your Japanese Character</Text>
-        <Text style={styles.hiraganaCharacter}>
-          {hiragana[currentCharacter].hiragana}
-        </Text>
+        <Text>Test your knowledge of Japanese characters</Text>
+        <View style={styles.characterContainer}>
+          <Text style={styles.characterText}>
+            {hiragana[currentCharacter].hiragana}
+          </Text>
+        </View>
         <TextInput
           placeholder="Enter Japanese Character"
           onChangeText={(text) => setInput(text)}
@@ -56,7 +57,7 @@ export default function App() {
           style={styles.input}
         />
       </View>
-      <TouchableOpacity onPress={handleSubmit}>
+      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text>Submit</Text>
       </TouchableOpacity>
     </KeyboardAvoidingView>
@@ -76,12 +77,27 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 5,
     borderColor: 'black',
+
+    // backgroundColor: 'blue',
+
+    alignContent: 'center',
+    textAlign: 'center',
   },
-  hiragana: {
+  characterContainer: {
+    margin: 20,
     display: 'flex',
+    alignContent: 'center',
     justifyContent: 'center',
-    alignItems: 'center',
+  },
+  characterText: {
     paddingVertical: 15,
     paddingHorizontal: 10,
+    fontSize: 200,
+    textAlign: 'center',
+  },
+  button: {
+    marginTop: 30,
+    display: 'flex',
+    alignContent: 'center',
   },
 })

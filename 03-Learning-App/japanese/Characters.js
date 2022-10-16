@@ -47,4 +47,6 @@ const hiragana = [
   { romanji: 'n', hiragana: 'ん' },
 ]
 
+const kanji = []
+
 export default hiragana
