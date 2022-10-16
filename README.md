@@ -27,3 +27,5 @@ An app demonstrating authentication with firebase.
 - Automatically Navigates to login screen or home screen depending on whether the user is logged in or out
 
 # 03 - A Japanese Character Learning App
+
+A random Japanese character appears on screen and you have to guess which character it is to test your knowledge.
