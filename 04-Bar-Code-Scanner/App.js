@@ -21,7 +21,7 @@ export default function App() {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true)
-    Alert.alert('Scan Succesful', `${data}`, [
+    Alert.alert('Scan Successful', `${data}`, [
       {
         text: 'Cancel',
         style: 'cancel',
