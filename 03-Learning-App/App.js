@@ -32,14 +32,12 @@ export default function App() {
     if (input.toLowerCase() === hiragana[currentCharacter].romanji) {
       setStreak(streak + 1)
       setStreakMax(Math.max(streak, streakMax))
-
       setMessage('You are correct')
       setRandomCharacter()
     } else {
-      alert(
-        `Sorry that was incorrect! it was ${hiragana[currentCharacter].romanji}`
+      setMessage(
+        `Sorry that was incorrect! It was ${hiragana[currentCharacter].romanji}.`
       )
-
       setStreak(0)
       setRandomCharacter()
     }
@@ -56,11 +54,11 @@ export default function App() {
           </Text>
         </View>
         <View style={styles.messageContainer}>
-          <Text style={styles.message}>{message}Text here</Text>
+          <Text style={styles.message}>{message}</Text>
         </View>
         <View style={styles.inputContainer}>
           <TextInput
-            placeholder="Enter Romanji"
+            placeholder="Enter the Romanji equivalent"
             onChangeText={(text) => setInput(text)}
             required
             style={styles.input}
@@ -129,5 +127,14 @@ const styles = StyleSheet.create({
   },
   statBox: {
     paddingHorizontal: 5,
+  },
+  messageContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'center',
+    marginBottom: 20,
+  },
+  message: {
+    textAlign: 'center',
   },
 })
