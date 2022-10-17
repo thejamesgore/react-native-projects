@@ -17,7 +17,7 @@ export default function App() {
   const [charSet, setCharSet] = useState('')
   const [streak, setStreak] = useState(0)
   const [streakMax, setStreakMax] = useState(0)
-  const [error, setError] = useState(false)
+  const [message, setMessage] = useState('')
 
   useEffect(() => {
     setRandomCharacter()
@@ -32,12 +32,12 @@ export default function App() {
     if (input.toLowerCase() === hiragana[currentCharacter].romanji) {
       setStreak(streak + 1)
       setStreakMax(Math.max(streak, streakMax))
-      setError(false)
-      alert('You are correct!')
+      setMessage('You are correct')
       setRandomCharacter()
     } else {
-      alert(`Sorry that was incorrect!`)
-      setError(true)
+      setMessage(
+        `Sorry that was incorrect! It was ${hiragana[currentCharacter].romanji}.`
+      )
       setStreak(0)
       setRandomCharacter()
     }
@@ -53,12 +53,17 @@ export default function App() {
             {hiragana[currentCharacter].hiragana}
           </Text>
         </View>
-        <TextInput
-          placeholder="Enter Japanese Character"
-          onChangeText={(text) => setInput(text)}
-          required
-          style={styles.input}
-        />
+        <View style={styles.messageContainer}>
+          <Text style={styles.message}>{message}</Text>
+        </View>
+        <View style={styles.inputContainer}>
+          <TextInput
+            placeholder="Enter the Romanji equivalent"
+            onChangeText={(text) => setInput(text)}
+            required
+            style={styles.input}
+          />
+        </View>
       </View>
       <TouchableOpacity style={styles.buttonOutline} onPress={handleSubmit}>
         <View style={styles.button}>
@@ -81,14 +86,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   input: {
-    backgroundColor: 'white',
-    width: '50%',
+    width: '100%',
     padding: 20,
-    borderRadius: 5,
-    borderColor: 'black',
-
     alignContent: 'center',
     textAlign: 'center',
+  },
+  inputContainer: {
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 10,
   },
   characterContainer: {
     margin: 20,
@@ -104,8 +110,6 @@ const styles = StyleSheet.create({
   },
   button: {
     margin: 30,
-    display: 'flex',
-    alignContent: 'center',
     width: '100%',
     borderRadius: 10,
     alignItems: 'center',
@@ -123,5 +127,14 @@ const styles = StyleSheet.create({
   },
   statBox: {
     paddingHorizontal: 5,
+  },
+  messageContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'center',
+    marginBottom: 20,
+  },
+  message: {
+    textAlign: 'center',
   },
 })
