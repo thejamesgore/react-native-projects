@@ -14,7 +14,6 @@ import hiragana from './japanese/Characters'
 export default function App() {
   const [input, setInput] = useState('')
   const [currentCharacter, setCurrentCharacter] = useState(0)
-  const [charSet, setCharSet] = useState('')
   const [streak, setStreak] = useState(0)
   const [streakMax, setStreakMax] = useState(0)
   const [message, setMessage] = useState('')
@@ -22,6 +21,10 @@ export default function App() {
   useEffect(() => {
     setRandomCharacter()
   }, [])
+
+  useEffect(() => {
+    setStreakMax(Math.max(streak, streakMax))
+  }, [streak])
 
   const setRandomCharacter = () => {
     const randomizer = Math.floor(Math.random() * hiragana.length)
@@ -31,7 +34,6 @@ export default function App() {
   const handleSubmit = () => {
     if (input.toLowerCase() === hiragana[currentCharacter].romanji) {
       setStreak(streak + 1)
-      setStreakMax(Math.max(streak, streakMax))
       setMessage('You are correct')
       setRandomCharacter()
     } else {
