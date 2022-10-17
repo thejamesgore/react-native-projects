@@ -60,8 +60,10 @@ export default function App() {
           style={styles.input}
         />
       </View>
-      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-        <Text>Submit</Text>
+      <TouchableOpacity style={styles.buttonOutline} onPress={handleSubmit}>
+        <View style={styles.button}>
+          <Text style={styles.buttonText}>Submit</Text>
+        </View>
       </TouchableOpacity>
       <View style={styles.stats}>
         <Text style={styles.statBox}>Streak: {streak}</Text>
@@ -104,6 +106,14 @@ const styles = StyleSheet.create({
     margin: 30,
     display: 'flex',
     alignContent: 'center',
+    width: '100%',
+    borderRadius: 10,
+    alignItems: 'center',
+    borderColor: 'black',
+    borderWidth: 2,
+  },
+  buttonText: {
+    padding: 5,
   },
   stats: {
     display: 'flex',
