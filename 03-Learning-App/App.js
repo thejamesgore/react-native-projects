@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   characterText: {
     paddingVertical: 15,
     paddingHorizontal: 10,
-    fontSize: 200,
+    fontSize: 120,
     textAlign: 'center',
   },
   button: {
