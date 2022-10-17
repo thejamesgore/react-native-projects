@@ -29,3 +29,7 @@ An app demonstrating authentication with firebase.
 # 03 - A Japanese Character Learning App
 
 A random Japanese character appears on screen and you have to guess which character it is to test your knowledge.
+
+# 04 - A Barcode Scanner
+
+An app requested by my friends as thier barcode scanners contain ads
