@@ -17,7 +17,7 @@ export default function App() {
   const [charSet, setCharSet] = useState('')
   const [streak, setStreak] = useState(0)
   const [streakMax, setStreakMax] = useState(0)
-  const [error, setError] = useState(false)
+  const [message, setMessage] = useState('')
 
   useEffect(() => {
     setRandomCharacter()
@@ -32,12 +32,14 @@ export default function App() {
     if (input.toLowerCase() === hiragana[currentCharacter].romanji) {
       setStreak(streak + 1)
       setStreakMax(Math.max(streak, streakMax))
-      setError(false)
-      alert('You are correct!')
+
+      setMessage('You are correct')
       setRandomCharacter()
     } else {
-      alert(`Sorry that was incorrect!`)
-      setError(true)
+      alert(
+        `Sorry that was incorrect! it was ${hiragana[currentCharacter].romanji}`
+      )
+
       setStreak(0)
       setRandomCharacter()
     }
@@ -52,6 +54,9 @@ export default function App() {
           <Text style={styles.characterText}>
             {hiragana[currentCharacter].hiragana}
           </Text>
+        </View>
+        <View style={styles.messageContainer}>
+          <Text style={styles.message}>{message}Text here</Text>
         </View>
         <View style={styles.inputContainer}>
           <TextInput
@@ -83,7 +88,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   input: {
-    // backgroundColor: 'blue',
     width: '100%',
     padding: 20,
     alignContent: 'center',
