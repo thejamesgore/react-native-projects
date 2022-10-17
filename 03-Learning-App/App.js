@@ -53,12 +53,14 @@ export default function App() {
             {hiragana[currentCharacter].hiragana}
           </Text>
         </View>
-        <TextInput
-          placeholder="Enter Japanese Character"
-          onChangeText={(text) => setInput(text)}
-          required
-          style={styles.input}
-        />
+        <View style={styles.inputContainer}>
+          <TextInput
+            placeholder="Enter Romanji"
+            onChangeText={(text) => setInput(text)}
+            required
+            style={styles.input}
+          />
+        </View>
       </View>
       <TouchableOpacity style={styles.buttonOutline} onPress={handleSubmit}>
         <View style={styles.button}>
@@ -81,14 +83,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   input: {
-    backgroundColor: 'white',
-    width: '50%',
+    // backgroundColor: 'blue',
+    width: '100%',
     padding: 20,
-    borderRadius: 5,
-    borderColor: 'black',
-
     alignContent: 'center',
     textAlign: 'center',
+  },
+  inputContainer: {
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 10,
   },
   characterContainer: {
     margin: 20,
@@ -104,8 +108,6 @@ const styles = StyleSheet.create({
   },
   button: {
     margin: 30,
-    display: 'flex',
-    alignContent: 'center',
     width: '100%',
     borderRadius: 10,
     alignItems: 'center',
