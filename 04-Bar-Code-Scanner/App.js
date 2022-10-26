@@ -1,10 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { Text, View, StyleSheet, Button, Linking, Alert } from 'react-native'
 import { BarCodeScanner } from 'expo-barcode-scanner'
+import * as SplashScreen from 'expo-splash-screen'
 
 export default function App() {
   const [hasPermission, setHasPermission] = useState(null)
   const [scanned, setScanned] = useState(false)
+
+  useEffect(() => {
+    const prepare = async () => {
+      await SplashScreen.preventAutoHideAsync()
+
+      await new Promise((resolve) => setTimeout(resolve, 2000))
+
+      await SplashScreen.hideAsync()
+    }
+    prepare()
+  }, [])
 
   useEffect(() => {
     const getBarCodeScannerPermissions = async () => {
