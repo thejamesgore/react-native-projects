@@ -9,7 +9,7 @@ A simple todo list app.
 - Add tasks
 - Remove tasks
 
-# 01 - Weather App
+## 01 - Weather App
 
 A weather app.
 
@@ -17,7 +17,7 @@ A weather app.
 - Reload the weather
 - See a display of the Air Pressure, Wind, Feel, & Humidity.
 
-# 02 - Login/Register App W/ Firebase
+## 02 - Login/Register App W/ Firebase
 
 An app demonstrating authentication with firebase.
 
@@ -26,10 +26,14 @@ An app demonstrating authentication with firebase.
 - Can sign out
 - Automatically Navigates to login screen or home screen depending on whether the user is logged in or out
 
-# 03 - A Japanese Character Learning App
+## 03 - A Japanese Character Learning App
 
 A random Japanese character appears on screen and you have to guess which character it is to test your knowledge.
 
-# 04 - A Barcode Scanner
+## 04 - A Barcode Scanner
 
 An app requested by my friends as thier barcode scanners contain ads
+
+
+## 05 - Plant Care App
+
